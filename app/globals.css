@@ -1,26 +1,239 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: #0E0D0B;
+  --color-surface: #16140F;
+  --color-surface-raised: #1D1A14;
+  --color-border: rgba(244, 239, 230, 0.08);
+  --color-border-hover: rgba(200, 100, 60, 0.45);
+  --color-foreground: #F4EFE6;
+  --color-muted: #A8A092;
+  --color-accent: #C8643C;
+  --color-accent-soft: rgba(200, 100, 60, 0.14);
+  --color-support: #2F5D4E;
+  --color-sand: #D9C7A3;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-arabic: var(--font-ibm-plex-arabic);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* Motion & Timings */
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 600ms;
+  --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.2, 0.7, 0.1, 1);
+
+  /* Multi-Layered Elevation Shadows (Impeccable style) */
+  --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(244, 239, 230, 0.03);
+  --shadow-card-hover: 0 20px 40px -12px rgba(0, 0, 0, 0.7), 0 0 25px -5px rgba(200, 100, 60, 0.2);
+  --shadow-terracotta: 0 12px 28px -6px rgba(200, 100, 60, 0.35);
+  --shadow-glow: 0 0 40px -10px rgba(200, 100, 60, 0.25);
+
+  /* Hairline isometric tokens mapped to SANAD signature terracotta brand palette */
+  --hairline-plate: #16140F;
+  --hairline-hi: #F4EFE6;
+  --hairline-edge: #E07A52;
+  --hairline-mid: #9E5D43;
+  --hairline-lo: #382218;
+  --hairline-stroke: 1.05;
+}
+
+.hairline-on-bg {
+  --hairline-plate: #0E0D0B;
+}
+
+.hairline-on-surface {
+  --hairline-plate: #16140F;
+}
+
+.hairline-on-raised {
+  --hairline-plate: #1D1A14;
+}
+
+/* ── Impeccable Design System Component & Utility Classes ──── */
+
+/* Master Impeccable Card */
+.impeccable-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.impeccable-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(200, 100, 60, 0.45);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* Frosted Glass Layers */
+.impeccable-glass {
+  background: rgba(22, 20, 15, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.impeccable-glass-dark {
+  background: rgba(14, 13, 11, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Subtle Architectural Moroccan Patterns */
+.bg-cad-grid {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(244, 239, 230, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(244, 239, 230, 0.025) 1px, transparent 1px);
+}
+
+.zellige-pattern-subtle {
+  background-image: 
+    radial-gradient(rgba(200, 100, 60, 0.12) 0.85px, transparent 0.85px), 
+    radial-gradient(rgba(244, 239, 230, 0.035) 0.85px, transparent 0.85px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+}
+
+/* Terracotta Signature Glows */
+.glow-terracotta {
+  box-shadow: 0 0 35px -5px rgba(200, 100, 60, 0.22);
+}
+
+.glow-terracotta-sm {
+  box-shadow: 0 0 16px -2px rgba(200, 100, 60, 0.35);
+}
+
+/* Gradient Text Accents */
+.gradient-terracotta-text {
+  background: linear-gradient(135deg, #F4EFE6 0%, #E07A52 50%, #C8643C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-sand-text {
+  background: linear-gradient(135deg, #F4EFE6 0%, #D9C7A3 60%, #B8A37E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Elegant Underline Sweep Hover for Links */
+.link-sweep {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.link-sweep::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 1.5px;
+  width: 100%;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link-sweep:hover::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* Shimmer Animation for High-Converting CTAs */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.18) 50%, rgba(255,255,255,0) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+/* Pulse Glow */
+@keyframes subtle-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.96); }
+}
+
+.animate-subtle-pulse {
+  animation: subtle-pulse 3s ease-in-out infinite;
+}
+
+/* Step Slide Fade for Multi-Step Form Transitions */
+@keyframes step-slide-fade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+.animate-step-fade {
+  animation: step-slide-fade 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Base Body & Selections */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-accent-soft);
+  color: var(--color-foreground);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  
+  .animate-shimmer,
+  .animate-subtle-pulse {
+    animation: none;
+  }
+
+  .impeccable-card,
+  .impeccable-card:hover {
+    transform: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.1ms !important;
+    scroll-behavior: auto !important;
+  }
 }
