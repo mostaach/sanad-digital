@@ -4,8 +4,8 @@ export const primaryCta = {
 } as const;
 
 export const secondaryCta = {
-  label: 'See What We Build',
-  href: '#systems',
+  label: 'See Live Systems',
+  href: '#projects',
 } as const;
 
 export const auditCta = {

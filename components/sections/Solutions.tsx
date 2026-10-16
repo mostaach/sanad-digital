@@ -13,7 +13,7 @@ import {
   BarChart3,
   LucideProps,
 } from 'lucide-react';
-import { HairlineFigure, type FigureName } from '@/components/visuals/HairlineFigure';
+import { CapabilityVisual } from '@/components/visuals/CapabilityVisual';
 
 const iconMap: Record<string, React.ComponentType<LucideProps>> = {
   Globe,
@@ -22,15 +22,6 @@ const iconMap: Record<string, React.ComponentType<LucideProps>> = {
   Zap,
   Brain,
   BarChart3,
-};
-
-const figureMap: Record<string, FigureName> = {
-  'digital-presence': 'digital-presence',
-  'operations': 'operations',
-  'customer-experience': 'customer-experience',
-  'automation': 'branches',
-  'ai': 'terminal',
-  'data': 'plot',
 };
 
 export function Solutions() {
@@ -52,7 +43,6 @@ export function Solutions() {
         <div className="-mx-4 flex snap-x gap-4 overflow-x-auto px-4 pb-3 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3">
           {solutions.map((solution) => {
             const Icon = iconMap[solution.icon] || LayoutDashboard;
-            const figureName = figureMap[solution.id] || 'cabinet';
 
             return (
               <div
@@ -60,8 +50,8 @@ export function Solutions() {
                 className="impeccable-card group flex w-[82vw] shrink-0 snap-start flex-col justify-between p-6 sm:w-auto sm:shrink"
               >
                 <div>
-                  {/* Interactive Isometric Hairline Apparatus Viewport */}
-                  <div className="relative w-full aspect-[5/4] mb-5 rounded-lg bg-background border border-border/80 group-hover:border-accent/50 flex items-center justify-center transition-all duration-300 overflow-hidden shadow-inner">
+                  {/* Real, Minimal, and Informative System Visual Viewport */}
+                  <div className="relative w-full aspect-[16/11] mb-5 rounded-xl bg-surface/90 border border-border/80 group-hover:border-accent/50 flex items-center justify-center transition-all duration-300 overflow-hidden shadow-inner">
                     {/* Subtle corner crosshairs */}
                     <div className="absolute top-2 left-2 w-1.5 h-1.5 border-t border-l border-accent/40 pointer-events-none group-hover:border-accent transition-colors" />
                     <div className="absolute top-2 right-2 w-1.5 h-1.5 border-t border-r border-accent/40 pointer-events-none group-hover:border-accent transition-colors" />
@@ -69,15 +59,9 @@ export function Solutions() {
                     <div className="absolute bottom-2 right-2 w-1.5 h-1.5 border-b border-r border-accent/40 pointer-events-none group-hover:border-accent transition-colors" />
 
                     {/* Ambient subtle warm backlight */}
-                    <div className="absolute inset-0 bg-radial from-accent/[0.1] to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                    <div className="absolute inset-0 bg-radial from-accent/[0.08] to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
-                    <HairlineFigure
-                      name={figureName}
-                      variant="brand"
-                      plate="bg"
-                      intensity={0.65}
-                      className="w-full h-full"
-                    />
+                    <CapabilityVisual id={solution.id} />
                   </div>
 
                   <div className="flex items-center gap-2 mb-2">

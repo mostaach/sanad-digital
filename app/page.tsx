@@ -1,8 +1,6 @@
 import { Hero } from '@/components/sections/Hero';
 import { Problem } from '@/components/sections/Problem';
 import { Infrastructure } from '@/components/sections/Infrastructure';
-import { Solutions } from '@/components/sections/Solutions';
-import { Systems } from '@/components/sections/Systems';
 import { LiveSystems } from '@/components/sections/LiveSystems';
 import { Transformation } from '@/components/sections/Transformation';
 import { WhySanad } from '@/components/sections/WhySanad';
@@ -16,8 +14,6 @@ export default function Home() {
       <Hero />
       <Problem />
       <Infrastructure />
-      <Solutions />
-      <Systems />
       <LiveSystems />
       <Transformation />
       <WhySanad />

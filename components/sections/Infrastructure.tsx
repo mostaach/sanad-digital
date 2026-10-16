@@ -5,10 +5,10 @@ import { LayerStack } from '@/components/visuals/LayerStack';
 
 export function Infrastructure() {
   return (
-    <Section id="infrastructure" background="surface">
+    <Section id="infrastructure" background="surface" className="scroll-mt-24 pt-24 md:pt-32">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             One digital layer behind your business.
           </h2>
           <p className="text-lg text-muted">

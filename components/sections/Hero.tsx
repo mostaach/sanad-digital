@@ -77,7 +77,7 @@ export function Hero() {
                 <span className="ms-1.5 transition-transform duration-200 group-hover:translate-x-1">→</span>
               </a>
               <a
-                href="#systems"
+                href="#projects"
                 className="inline-flex items-center justify-center text-foreground hover:text-accent border border-border hover:border-accent/50 bg-surface/50 hover:bg-surface px-3.5 py-2 sm:px-4.5 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition-all duration-200"
               >
                 <span>See systems for riads</span>

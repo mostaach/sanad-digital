@@ -42,3 +42,5 @@ next-env.d.ts
 
 # lead data — keep off version control
 /.leads/
+
+.vercel

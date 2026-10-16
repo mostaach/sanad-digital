@@ -44,7 +44,7 @@ export const proof: ProofItem[] = [
     name: 'RoomSwift',
     description: 'Direct booking and property showcase flow',
     industry: 'Hotels and vacation stays',
-    url: 'https://room-swift-git-main-mostaachs-projects.vercel.app',
+    url: 'https://room-swift.vercel.app/',
   },
   {
     name: 'Agafay Journey OS',
@@ -111,7 +111,7 @@ export const liveProjects: LiveProject[] = [
     stage: 'Pre-stay',
     description:
       'A booking-oriented property experience that presents stays, room details, dates, and inquiry paths without relying on a generic brochure page.',
-    url: 'https://room-swift-git-main-mostaachs-projects.vercel.app/auth',
+    url: 'https://room-swift.vercel.app/',
     tags: ['Direct booking', 'Property pages', 'Availability', 'Inquiry flow'],
     features: [
       {
