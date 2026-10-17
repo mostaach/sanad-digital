@@ -148,6 +148,25 @@ const CABLES = [
 export function FragmentedGraph() {
   const [hovered, setHovered] = useState<string | null>(null);
 
+  const getToolDisconnectInfo = (toolId: string) => {
+    switch (toolId) {
+      case 'wa':
+        return 'No automated sync to Spreadsheets or PMS — manual copy-pasting leads to double-bookings.';
+      case 'insta':
+        return 'DMs and comments are isolated from your reservation queue; inquiries go unanswered.';
+      case 'maps':
+        return 'Guests find your listing on Maps but lack direct booking integration, losing high-intent traffic.';
+      case 'phone':
+        return 'Verbal reservation details are jotted down hastily and lost across shift handoffs.';
+      case 'xls':
+        return 'Static sheets require constant manual updates, leaving room availability and rates out of sync.';
+      case 'paper':
+        return 'Physical receipts and paper notes stay stranded at the reception desk with no digital backup.';
+      default:
+        return 'Unintegrated channel with manual handoffs.';
+    }
+  };
+
   return (
     <div className="relative w-full overflow-hidden rounded-2xl bg-surface/30 border border-border/80 p-4 sm:p-6 my-6 transition-all">
       <div className="flex items-center justify-between pb-3 mb-2 border-b border-border/60 text-[11px] font-mono">
@@ -158,7 +177,64 @@ export function FragmentedGraph() {
         <span className="text-muted tracking-wider hidden sm:inline">NO SHARED VIEW</span>
       </div>
 
-      <div className="relative w-full aspect-[16/10] max-h-[460px]">
+      {/* ── Mobile Layout (< sm): Clean, interactive touch-friendly channel list ── */}
+      <div className="sm:hidden flex flex-col gap-2.5 my-2">
+        {TOOLS.map((tool) => {
+          const isSelected = hovered === tool.id;
+
+          return (
+            <button
+              key={tool.id}
+              type="button"
+              onClick={() => setHovered(isSelected ? null : tool.id)}
+              className={`w-full text-left p-3 rounded-xl border transition-all duration-200 ${
+                isSelected
+                  ? 'bg-surface border-accent shadow-md shadow-accent/15 ring-1 ring-accent/30'
+                  : 'bg-background/90 border-border/80 hover:border-accent/40 active:scale-[0.99]'
+              }`}
+            >
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div
+                    className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 border transition-colors ${
+                      isSelected
+                        ? 'bg-accent/10 border-accent/40 text-accent'
+                        : 'bg-surface border-border text-foreground/80'
+                    }`}
+                  >
+                    {tool.icon}
+                  </div>
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-xs font-semibold text-foreground tracking-tight">
+                        {tool.label}
+                      </span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-red-400/80 shrink-0" />
+                    </div>
+                    <span className="block text-[11px] text-muted leading-tight mt-0.5 truncate">
+                      {tool.detail}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="text-[10px] font-mono shrink-0 px-2 py-0.5 rounded border border-red-500/30 bg-red-500/10 text-red-400">
+                  SEVERED
+                </div>
+              </div>
+
+              {isSelected && (
+                <div className="mt-2.5 pt-2.5 border-t border-border/70 text-[11px] text-red-400/90 flex items-start gap-1.5 leading-relaxed">
+                  <span className="font-mono text-xs shrink-0">✕</span>
+                  <span>{getToolDisconnectInfo(tool.id)}</span>
+                </div>
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* ── Desktop & Tablet Layout (sm and up): Visual Cable Diagram ── */}
+      <div className="hidden sm:block relative w-full aspect-[16/10] max-h-[460px]">
         {/* Background Tangled SVG Cables */}
         <svg
           viewBox="0 0 680 430"
@@ -260,6 +336,7 @@ export function FragmentedGraph() {
               key={tool.id}
               onMouseEnter={() => setHovered(tool.id)}
               onMouseLeave={() => setHovered(null)}
+              onClick={() => setHovered(hovered === tool.id ? null : tool.id)}
               style={{
                 left: `${leftPct}%`,
                 top: `${topPct}%`,
@@ -309,7 +386,10 @@ export function FragmentedGraph() {
         <span className="flex items-center gap-1.5">
           <span className="text-red-400">✕</span> 5 unintegrated touchpoints
         </span>
-        <span className="text-accent/90">
+        <span className="text-accent/90 sm:hidden">
+          TAP ANY CHANNEL TO SEE WHERE WORK GETS LOST
+        </span>
+        <span className="text-accent/90 hidden sm:inline">
           HOVER ANY CHANNEL TO SEE WHERE WORK GETS LOST
         </span>
       </div>

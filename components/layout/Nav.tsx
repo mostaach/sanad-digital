@@ -79,7 +79,9 @@ export function Nav() {
     <>
       <header
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-          scrolled ? 'impeccable-glass-dark border-b border-border/80 py-2.5 shadow-lg shadow-black/30' : 'bg-transparent py-4'
+          scrolled
+            ? 'bg-background/95 backdrop-blur-md border-b border-border/80 py-2.5 shadow-lg shadow-black/40'
+            : 'bg-background/80 sm:bg-transparent backdrop-blur-sm sm:backdrop-blur-none py-3 sm:py-4'
         }`}
       >
         <div className="mx-auto max-w-[1200px] px-4 sm:px-6 flex items-center justify-between">
