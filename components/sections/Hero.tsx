@@ -1,28 +1,8 @@
 'use client';
 
 import React from 'react';
-import dynamic from 'next/dynamic';
 import { Container } from '@/components/layout/Container';
-import { colors } from '@/lib/design/tokens';
-
-const HeroGraph = dynamic(() => import('@/components/visuals/HeroGraph').then(mod => mod.HeroGraph), { 
-  ssr: false,
-  loading: () => (
-    <div className="w-full aspect-square flex items-center justify-center bg-surface-raised/20 rounded-full animate-pulse">
-      <svg viewBox="0 0 600 600" width="100%" className="max-w-full h-auto opacity-50">
-        <circle cx="300" cy="300" r="40" fill={colors.accent} />
-        <circle cx="300" cy="100" r="28" fill={colors.surfaceRaised} stroke={colors.border} />
-        <circle cx="500" cy="300" r="28" fill={colors.surfaceRaised} stroke={colors.border} />
-        <circle cx="300" cy="500" r="28" fill={colors.surfaceRaised} stroke={colors.border} />
-        <circle cx="100" cy="300" r="28" fill={colors.surfaceRaised} stroke={colors.border} />
-        <line x1="300" y1="300" x2="300" y2="100" stroke={colors.muted} strokeWidth="1" />
-        <line x1="300" y1="300" x2="500" y2="300" stroke={colors.muted} strokeWidth="1" />
-        <line x1="300" y1="300" x2="300" y2="500" stroke={colors.muted} strokeWidth="1" />
-        <line x1="300" y1="300" x2="100" y2="300" stroke={colors.muted} strokeWidth="1" />
-      </svg>
-    </div>
-  )
-});
+import { HeroGraph } from '@/components/visuals/HeroGraph';
 
 export function Hero() {
   const clarityBullets = ['Guest guides', 'WhatsApp workflows', 'Operations dashboards'];
