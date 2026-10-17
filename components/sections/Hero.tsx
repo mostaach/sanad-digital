@@ -48,17 +48,17 @@ export function Hero() {
               ))}
             </div>
             
-            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-0.5">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-0.5">
               <a
                 href="#audit"
-                className="inline-flex items-center justify-center bg-accent hover:bg-accent/90 text-foreground px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 shadow-md shadow-accent/25 hover:shadow-xl hover:shadow-accent/40 active:scale-[0.98] group"
+                className="inline-flex items-center justify-center bg-accent hover:bg-accent/90 text-foreground px-4 py-2.5 sm:px-5 sm:py-2.5 rounded-lg text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 shadow-md shadow-accent/25 hover:shadow-xl hover:shadow-accent/40 active:scale-[0.98] group min-h-[44px]"
               >
                 <span>Audit my WhatsApp workflow</span>
                 <span className="ms-1.5 transition-transform duration-200 group-hover:translate-x-1">→</span>
               </a>
               <a
                 href="#projects"
-                className="inline-flex items-center justify-center text-foreground hover:text-accent border border-border hover:border-accent/50 bg-surface/50 hover:bg-surface px-3.5 py-2 sm:px-4.5 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition-all duration-200"
+                className="inline-flex items-center justify-center text-foreground hover:text-accent border border-border hover:border-accent/50 bg-surface/50 hover:bg-surface px-4 py-2.5 sm:px-4.5 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition-all duration-200 min-h-[44px]"
               >
                 <span>See systems for riads</span>
                 <span className="ms-1.5">&rarr;</span>
@@ -79,11 +79,14 @@ export function Hero() {
           <div className="w-full max-w-[520px] lg:max-w-[560px] xl:max-w-[620px] 2xl:max-w-[660px] mx-auto lg:mx-0">
             <div className="relative rounded-2xl bg-[#0E0D0B]/95 border border-border/80 p-2 sm:p-3 shadow-2xl backdrop-blur-md overflow-hidden">
               <div className="flex items-center justify-between px-2 pt-1 pb-2 border-b border-border/30 text-[10px] font-mono tracking-widest text-muted/80">
-                <span className="flex items-center gap-1.5">
+                <span className="flex items-center gap-1.5 shrink-0">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
                   OPERATIONAL CORE
                 </span>
-                <span className="text-accent/90 font-semibold tracking-wider">ALL YOUR TOOLS. ONE ECOSYSTEM.</span>
+                <span className="text-accent/90 font-semibold tracking-wider text-right truncate pl-2">
+                  <span className="hidden sm:inline">ALL YOUR TOOLS. ONE ECOSYSTEM.</span>
+                  <span className="sm:hidden">ONE ECOSYSTEM</span>
+                </span>
               </div>
               <div className="pt-2">
                 <HeroGraph />

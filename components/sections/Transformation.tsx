@@ -171,8 +171,13 @@ export const Transformation = () => {
             </div>
           </div>
 
+          {/* Mobile Swipe Helper Pill */}
+          <div className="flex lg:hidden items-center justify-center gap-2 py-1 px-3 mb-2 rounded-full bg-accent/10 border border-accent/25 text-[10px] font-mono text-accent w-fit mx-auto">
+            <span>⇄ Swipe horizontally to explore full architecture</span>
+          </div>
+
           {/* Diagram Canvas Wrapper — Horizontally scrollable on small screens, full scale on desktop */}
-          <div className="relative w-full overflow-x-auto pb-4 pt-2 -mx-2 px-2">
+          <div className="relative w-full overflow-x-auto pb-4 pt-2 -mx-2 px-2 touch-pan-x scrollbar-thin">
             <div className="relative min-w-[1060px] h-[630px] mx-auto select-none">
 
               {/* ── SVG WIRING LAYER ─────────────────────────────────── */}
